@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.whycody.maturzystnie.MainNavigation
@@ -18,7 +18,7 @@ class SplashFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentSplashBinding.inflate(inflater)
-        GlobalScope.launch {
+        MainScope().launch {
             delay(1000)
             (activity as MainNavigation).showHomeFragment()
         }
