@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.whycody.maturzystnie.R
 import pl.whycody.maturzystnie.data.FormOption
 import pl.whycody.maturzystnie.BR
+import pl.whycody.maturzystnie.home.form.FormInteractor
 
-class FormAdapter: ListAdapter<FormOption, FormAdapter.FormHolder>(FormDiffCallback()) {
+class FormAdapter(private val interactor: FormInteractor):
+    ListAdapter<FormOption, FormAdapter.FormHolder>(FormDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FormHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,6 +27,7 @@ class FormAdapter: ListAdapter<FormOption, FormAdapter.FormHolder>(FormDiffCallb
 
         fun setupData(formOption: FormOption) {
             binding.setVariable(BR.formOption, formOption)
+            binding.setVariable(BR.interactor, interactor)
         }
     }
 }

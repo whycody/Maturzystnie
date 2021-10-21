@@ -14,6 +14,7 @@ data class FormQuestion(
 data class FormOption(
     val id: String,
     val title: String,
+    val subtitle: String,
     var selected: Boolean = false,
     val formQuestion: FormQuestion?
 )

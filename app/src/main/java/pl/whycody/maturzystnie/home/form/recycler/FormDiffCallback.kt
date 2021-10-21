@@ -10,5 +10,5 @@ class FormDiffCallback: DiffUtil.ItemCallback<FormOption>() {
         = oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: FormOption, newItem: FormOption)
-        =   oldItem == newItem
+        = false
 }

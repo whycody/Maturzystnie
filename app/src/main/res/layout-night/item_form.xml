@@ -5,6 +5,9 @@
         <variable
             name="formOption"
             type="pl.whycody.maturzystnie.data.FormOption" />
+        <variable
+            name="interactor"
+            type="pl.whycody.maturzystnie.home.form.FormInteractor" />
     </data>
 
     <LinearLayout
@@ -12,17 +15,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="30dp"
+        android:orientation="vertical"
+        android:onClick="@{()->interactor.formOptionClicked(formOption.id)}"
         android:background="@{formOption.selected ? @drawable/s_selected_form_option : @drawable/s_default_form_option}">
 
         <TextView
             android:id="@+id/optionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:text="@{formOption.title}"
-            android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkWhite}"
-            android:paddingHorizontal="40dp"
-            android:paddingVertical="30dp"/>
+            android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkWhite}" />
+
+        <TextView
+            android:id="@+id/optionDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.6"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:layout_gravity="center"
+            android:text="@{formOption.subtitle}"
+            android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkWhite}" />
 
     </LinearLayout>
 
