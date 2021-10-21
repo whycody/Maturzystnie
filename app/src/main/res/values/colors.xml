@@ -10,6 +10,10 @@
     <color name="lightGray">#E7E7E7</color>
     <color name="darkGray">#171717</color>
 
-    <color name="textLightBlack">#787878</color>
-    <color name="textLightWhite">#8F8F8F</color>
+    <color name="colorExtraLightBlack">#CFCFCF</color>
+    <color name="colorExtraLightWhite">#3C3C3C</color>
+    <color name="colorTextLightBlack">#787878</color>
+    <color name="colorTextLightWhite">#8F8F8F</color>
+    <color name="colorTextDarkBlack">#2C2C2C</color>
+    <color name="colorTextDarkWhite">#C6C6C6</color>
 </resources>

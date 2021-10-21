@@ -3,11 +3,13 @@
         <item name="colorPrimary">@color/colorGreen</item>
         <item name="colorPrimaryDark">@color/colorDarkGreen</item>
         <item name="colorAccent">@color/colorLightGreen</item>
-        <item name="colorOnSurface">@color/textLightWhite</item>
+        <item name="colorOnSurface">@color/colorTextLightWhite</item>
         <item name="colorSurface">@color/darkGray</item>
+        <item name="colorOnPrimarySurface">@color/colorTextDarkWhite</item>
+        <item name="colorPrimarySurface">@color/colorExtraLightWhite</item>
 
         <item name="fontFamily">@font/montserrat</item>
-        <item name="android:textColor">#C6C6C6</item>
+        <item name="android:textColor">@color/colorTextDarkWhite</item>
         <item name="android:windowBackground">#272727</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/darkGray</item>
     </style>

@@ -2,6 +2,5 @@
     <string name="app_name">Maturzystnie</string>
     <string name="hello_in">Witaj w</string>
     <string name="what_do_you_want_to_train">Co chcesz dzisiaj potrenować?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_subject">Wybierz swój przedmiot</string>
 </resources>
