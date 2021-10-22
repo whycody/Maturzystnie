@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{formOption.title}"
+            android:text="@{formOption.title.toLowerCase()}"
             android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkWhite}" />
 
         <TextView
@@ -37,7 +37,8 @@
             android:gravity="center"
             android:textSize="11sp"
             android:layout_gravity="center"
-            android:text="@{formOption.subtitle}"
+            android:visibility="@{ formOption.subtitle == null ? View.GONE : View.VISIBLE}"
+            android:text="@{formOption.subtitle.toLowerCase()}"
             android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkWhite}" />
 
     </LinearLayout>

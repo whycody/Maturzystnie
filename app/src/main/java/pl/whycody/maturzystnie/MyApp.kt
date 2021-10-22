@@ -12,6 +12,7 @@ import org.koin.core.context.GlobalContext
 import org.koin.dsl.module
 import pl.whycody.maturzystnie.data.ApiService
 import pl.whycody.maturzystnie.data.BASE_URL
+import pl.whycody.maturzystnie.home.form.FormQuestionsProvider
 import pl.whycody.maturzystnie.home.form.FormViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,7 +30,9 @@ class MyApp: Application() {
 
 val appModule = module {
 
-    viewModel { FormViewModel(get()) }
+    single { FormQuestionsProvider(androidContext()) }
+
+    viewModel { FormViewModel(get(), get()) }
 
     single<Retrofit> {
         return@single Retrofit.Builder()

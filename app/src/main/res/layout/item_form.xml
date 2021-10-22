@@ -8,6 +8,7 @@
         <variable
             name="interactor"
             type="pl.whycody.maturzystnie.home.form.FormInteractor" />
+        <import type="android.view.View"/>
     </data>
 
     <LinearLayout
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{formOption.title}"
+            android:text="@{formOption.title.toLowerCase()}"
             android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkBlack}" />
 
         <TextView
@@ -36,8 +37,9 @@
             android:alpha="0.6"
             android:gravity="center"
             android:textSize="11sp"
+            android:visibility="@{ formOption.subtitle == null ? View.GONE : View.VISIBLE}"
             android:layout_gravity="center"
-            android:text="@{formOption.subtitle}"
+            android:text="@{formOption.subtitle.toLowerCase()}"
             android:textColor="@{formOption.selected ? @color/colorGreen : @color/colorTextDarkBlack}" />
 
     </LinearLayout>

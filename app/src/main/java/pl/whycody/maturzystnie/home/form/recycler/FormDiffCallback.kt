@@ -2,7 +2,6 @@ package pl.whycody.maturzystnie.home.form.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 import pl.whycody.maturzystnie.data.FormOption
-import pl.whycody.maturzystnie.data.FormQuestion
 
 class FormDiffCallback: DiffUtil.ItemCallback<FormOption>() {
 
