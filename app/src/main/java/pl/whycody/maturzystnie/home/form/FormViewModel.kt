@@ -15,7 +15,7 @@ class FormViewModel(private val apiService: ApiService,
     private val selectedStudyModeId = MutableLiveData<String>()
     private val selectedCategoryId = MutableLiveData<String>()
     private val selectedYearId = MutableLiveData<String>()
-    private val backOption = FormOption("back", "Wróć")
+    private val backOption = FormOption("back", "wróć")
     private var currentMode = MutableLiveData(CHOOSE_SUBJECT_MODE)
     val currentQuestion = MutableLiveData(questionsProvider.getQuestion(currentMode.value!!))
 
@@ -32,6 +32,7 @@ class FormViewModel(private val apiService: ApiService,
         else "rozszerzenie"
 
     override fun formOptionClicked(id: String) {
+        if(options.value!!.any{ it.selected } && currentMode.value!! < 2) return
         updateView(id)
         when(currentMode.value!!) {
             CHOOSE_SUBJECT_MODE -> subjectSelected(id)

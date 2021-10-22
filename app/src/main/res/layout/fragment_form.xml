@@ -7,7 +7,8 @@
             type="pl.whycody.maturzystnie.home.form.FormViewModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,23 +18,32 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/questionText"
+        <LinearLayout
+            android:id="@+id/formContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{vm.currentQuestion}"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="17sp"
-            android:textAlignment="center"
-            android:layout_marginVertical="20dp"
-            android:layout_marginHorizontal="@dimen/app_padding"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/formRecycler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"/>
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.currentQuestion}"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="@dimen/app_padding"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/formRecycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
