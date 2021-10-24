@@ -4,7 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-const val BASE_URL = "https://poznajmikolajakopernika.pl/api/"
+const val BASE_URL = "https://maturzystnie.pl/api/"
 
 interface ApiService {
 

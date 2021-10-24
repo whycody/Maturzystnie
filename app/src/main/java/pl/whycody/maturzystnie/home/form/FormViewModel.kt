@@ -11,6 +11,7 @@ class FormViewModel(private val apiService: ApiService,
                     private val questionsProvider: FormQuestionsProvider): ViewModel(), FormInteractor {
 
     private val options = MutableLiveData<List<FormOption>>(emptyList())
+    private val startShowingAnimations = MutableLiveData(false)
     private val selectedSubjectId = MutableLiveData<String>()
     private val selectedStudyModeId = MutableLiveData<String>()
     private val selectedCategoryId = MutableLiveData<String>()
@@ -23,6 +24,8 @@ class FormViewModel(private val apiService: ApiService,
 
     fun getCurrentMode() = currentMode
 
+    fun getStartShowingAnimations() = startShowingAnimations
+
     init {
         viewModelScope.launch { postSubjectsOptions() }
     }
@@ -33,6 +36,7 @@ class FormViewModel(private val apiService: ApiService,
 
     override fun formOptionClicked(id: String) {
         if(options.value!!.any{ it.selected } && currentMode.value!! < 2) return
+        startShowingAnimations.value = true
         updateView(id)
         when(currentMode.value!!) {
             CHOOSE_SUBJECT_MODE -> subjectSelected(id)

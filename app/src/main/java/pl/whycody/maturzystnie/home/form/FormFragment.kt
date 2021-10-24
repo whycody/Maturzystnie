@@ -15,10 +15,12 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import pl.whycody.maturzystnie.R
 import pl.whycody.maturzystnie.databinding.FragmentFormBinding
 import pl.whycody.maturzystnie.home.form.recycler.FormAdapter
+import pl.whycody.maturzystnie.home.form.recycler.FormItemDecoration
 
 class FormFragment : Fragment() {
 
     private var lastMode = 0
+    private var showNextPanel = true
     private val formViewModel: FormViewModel by viewModel()
     private lateinit var binding: FragmentFormBinding
     private lateinit var centerToLeftAnim: Animation
@@ -31,8 +33,8 @@ class FormFragment : Fragment() {
         binding = FragmentFormBinding.inflate(inflater)
         binding.lifecycleOwner = activity
         binding.vm = formViewModel
-        setupRecycler()
         declareAnimations()
+        setupRecycler()
         observeCurrentMode()
         return binding.root
     }
@@ -50,41 +52,45 @@ class FormFragment : Fragment() {
         binding.formRecycler.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL, false)
         binding.formRecycler.adapter = adapter
+        binding.formRecycler.addItemDecoration(FormItemDecoration(requireContext()))
         observeOptions(adapter)
     }
 
     private fun observeOptions(adapter: FormAdapter) {
         formViewModel.getOptions().observe(requireActivity(), {
             adapter.submitList(it.toMutableList())
+            if(formViewModel.getStartShowingAnimations().value!! && !it.any { it.selected })
+                binding.formContainer.startAnimation(
+                    if(showNextPanel) rightToCenterAnim
+                    else leftToCenterAnim)
         })
     }
 
     private fun observeCurrentMode() {
         formViewModel.getCurrentMode().observe(requireActivity(), {
-            if(it > lastMode) nextBtnClicked()
+            showNextPanel = it > lastMode
+            if(showNextPanel) nextBtnClicked()
             else backBtnClicked()
             lastMode = it
         })
     }
 
     private fun nextBtnClicked() {
+        if(!formViewModel.getStartShowingAnimations().value!!) return
         MainScope().launch {
             delay(400)
             binding.formContainer.startAnimation(centerToLeftAnim)
             delay(100)
             formViewModel.updateValues()
-            delay(200)
-            binding.formContainer.startAnimation(rightToCenterAnim)
         }
     }
 
     private fun backBtnClicked() {
+        if(!formViewModel.getStartShowingAnimations().value!!) return
         MainScope().launch {
             binding.formContainer.startAnimation(centerToRightAnim)
             delay(100)
             formViewModel.updateValues()
-            delay(200)
-            binding.formContainer.startAnimation(leftToCenterAnim)
         }
     }
 }
