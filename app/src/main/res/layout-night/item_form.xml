@@ -13,10 +13,11 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginHorizontal="10dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="30dp"
+        android:gravity="center"
         android:orientation="vertical"
         android:onClick="@{()->interactor.formOptionClicked(formOption.id)}"
         android:background="@{formOption.selected ? @drawable/s_selected_form_option : @drawable/s_default_form_option}">
